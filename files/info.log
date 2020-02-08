@@ -1,0 +1,72 @@
+2019-12-18 21:35:16 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:28) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:35:34 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:28) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:36:17 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:29) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:36:29 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:29) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:36:29 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:29) ]
+INFO:dajiahaowoshixiaoming
+2019-12-18 21:37:01 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:29) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:37:01 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo1(TestLog.java:33) ]
+INFO:dajiahaowoshixiaoming
+2019-12-18 21:37:59 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:29) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:38:11 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:29) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:38:11 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo1(TestLog.java:33) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:42:20 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:32) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:42:20 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo1(TestLog.java:36) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:42:20 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo2(TestLog.java:40) ]
+INFO:hahadajiahaowoshixiaoming1232
+2019-12-18 21:43:20 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:32) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:43:20 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo1(TestLog.java:36) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:43:20 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo2(TestLog.java:40) ]
+INFO:{}dajiahaowoshixiaoming{}
+2019-12-18 21:46:40 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:33) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:46:40 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo1(TestLog.java:41) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:46:40 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo2(TestLog.java:45) ]
+INFO:{}dajiahaowoshixiaoming{}
+2019-12-18 21:46:54 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:34) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:46:54 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:36) ]
+INFO:dajiahaowoshixiaoming%d
+2019-12-18 21:46:54 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo1(TestLog.java:42) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:46:54 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo2(TestLog.java:46) ]
+INFO:{}dajiahaowoshixiaoming{}
+2019-12-18 21:47:05 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:34) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:47:05 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:36) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:47:05 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo1(TestLog.java:42) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:47:05 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo2(TestLog.java:46) ]
+INFO:{}dajiahaowoshixiaoming{}
+2019-12-18 21:54:08 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:31) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:54:08 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:33) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:54:08 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.main(TestLog.java:26) ]
+INFO:发生错误
+java.lang.RuntimeException: 真的发生错误了
+	at com.jfbian.test.TestLog.main(TestLog.java:26)
+2019-12-18 21:55:01 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:31) ]
+INFO:dajiahaowoshixiaoming111
+2019-12-18 21:55:01 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.main(TestLog.java:25) ]
+INFO:发生错误
+java.lang.RuntimeException: 真的发生错误了
+	at com.jfbian.test.TestLog.main(TestLog.java:25)
+2019-12-18 21:55:01 下午 [Thread: main][ Class:com.jfbian.test.TestLog >> Method: com.jfbian.test.TestLog.loginfo(TestLog.java:33) ]
+INFO:dajiahaowoshixiaoming%s
+2019-12-18 21:57:20 下午 [Thread: main][ Class:com.jfbian.util.Logs >> Method: com.jfbian.util.Logs.info(Logs.java:27) ]
+INFO:sadf

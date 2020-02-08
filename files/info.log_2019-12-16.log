@@ -1,0 +1,8 @@
+2019-12-16 22:29:59 下午 [Thread: main][ Class:com.jfbian.log >> Method: com.jfbian.log.main(log.java:23) ]
+INFO:asdgadf
+2019-12-16 22:49:41 下午 [Thread: main][ Class:com.jfbian.log >> Method: com.jfbian.log.main(log.java:24) ]
+INFO:dajiahao
+2019-12-16 22:56:43 下午 [Thread: main][ Class:com.jfbian.util.XMLUtilTest >> Method: com.jfbian.util.XMLUtilTest.testWriteToXML(XMLUtilTest.java:54) ]
+INFO:info
+2019-12-16 22:56:43 下午 [Thread: main][ Class:com.jfbian.util.XMLUtilTest >> Method: com.jfbian.util.XMLUtilTest.testWriteToXML(XMLUtilTest.java:55) ]
+ERROR:错误

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<persons> 
+  <person age="30" weight="80" gender="femail"> 
+    <name>小明</name>  
+    <gender>mail</gender>  
+    <hight>185</hight> 
+  </person>  
+  <person age="21" weight="78"> 
+    <name>Tom</name>  
+    <favorite nationality="China">Running</favorite>  
+    <gender>mail</gender>  
+    <hight>185</hight> 
+  </person>  
+  <person age="21" weight="45"> 
+    <name>Lily</name> 
+  </person> 
+</persons>

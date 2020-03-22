@@ -55,6 +55,7 @@ public class XlightWebUtil {
         SSLContext sc = null;
         try {
             sc = SSLContext.getInstance("SSLv3");
+            //sc = SSLContext.getInstance("TLSv1.3");
             // 实现一个X509TrustManager接口，用于绕过验证，不用修改里面的方法
             final X509TrustManager trustManager = new X509TrustManager() {
                 @Override
@@ -75,6 +76,40 @@ public class XlightWebUtil {
             e.printStackTrace();
         }
         return sc;
+    }
+
+    /**
+     *
+     * @Title: sleepAllThread
+     * @Description: 睡眠所有线程millis毫秒
+     * @param millis
+     * @return: void
+     */
+    @SuppressWarnings("static-access")
+    public static void sleepAllThread(int millis) {
+        ThreadGroup group = Thread.currentThread().getThreadGroup();
+        ThreadGroup topGroup = group;
+        // 遍历线程组树，获取根线程组
+        while (group != null) {
+            topGroup = group;
+            group = group.getParent();
+        }
+        // 激活的线程数加倍
+        int estimatedSize = topGroup.activeCount() * 2;
+        Thread[] slackList = new Thread[estimatedSize];
+        // 获取根线程组的所有线程
+        int actualSize = topGroup.enumerate(slackList);
+        // copy into a list that is the exact size
+        Thread[] list = new Thread[actualSize];
+        System.arraycopy(slackList, 0, list, 0, actualSize);
+        for (Thread thread : list) {
+            System.out.println(thread.getName());
+            try {
+                thread.sleep(millis);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**

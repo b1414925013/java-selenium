@@ -1,10 +1,17 @@
 package com.jfbian.util;
 
-import com.jcraft.jsch.*;
+
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
+
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelSftp;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+import com.jcraft.jsch.SftpException;
 
 /*四、Jsch中sftp提供的一些api
 

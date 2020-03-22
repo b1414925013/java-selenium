@@ -33,7 +33,7 @@ public class CalculationUtil {
      * @param value1 被加数
      * @param value2 加数
      * @param scale 精确范围(小数点后几位)
-     * @param mode 精確模式
+     * @param roundingMode 精確模式
      */
     public static String add(String value1, String value2, int scale, int mode) {
         final BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
@@ -144,7 +144,7 @@ public class CalculationUtil {
      * @param value1 被乘数
      * @param value2 乘数
      * @param scale 精确范围(小数点后几位)
-     * @param mode 精確模式
+     * @param roundingMode 精確模式
      */
     public static String multiply(String value1, String value2, int scale, int mode) {
         final BigDecimal b1 = new BigDecimal(Double.valueOf(value1));
@@ -182,7 +182,7 @@ public class CalculationUtil {
      * @param value1 被减数
      * @param value2 减数
      * @param scale 精确范围(小数点后几位)
-     * @param mode 精確模式
+     * @param roundingMode 精確模式
      */
     public static String subtract(String value1, String value2, int scale, int mode) {
         final BigDecimal b1 = new BigDecimal(Double.valueOf(value1));

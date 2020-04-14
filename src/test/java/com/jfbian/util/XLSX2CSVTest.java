@@ -25,7 +25,7 @@ class XLSX2CSVTest {
     void test() {
         int lastRowIndex = XLSX2CSV.getLastRowIndex("D:\\Desktop\\test.xlsx", "test");
         System.out.println(lastRowIndex);
-        Map<String, List<List<String>>> read = XLSX2CSV.read("D:\\Desktop\\test.xlsx", 0, 1, "test");
+        Map<String, List<List<String>>> read = XLSX2CSV.read("D:\\Desktop\\test.xlsx", 0, 10, "test");
         System.out.println(read);
     }
 }

@@ -31,7 +31,6 @@ public class CsvUtil {
      * @Description:读取csv全部文件
      * @param path
      * @return: void
-     * @throws
      */
     public static List<String[]> readCsv(String path) {
         final List<String[]> list = new ArrayList<>();
@@ -50,14 +49,12 @@ public class CsvUtil {
     }
 
     /**
-     * @return
      *
      * @Title: readCsv
      * @Description: 对csv文件 其中一列进行读取，列是以0为计数开始
      * @param path
      * @param columnNum
      * @return: void
-     * @throws
      */
     public static List<String> readCsv(String path, int columnNum) {
         final List<String> list = new ArrayList<>();
@@ -83,9 +80,7 @@ public class CsvUtil {
      * @Description: 读取csv文件 ,跳过skipNum行
      * @param path
      * @param skipNum
-     * @return
      * @return: List<String[]>
-     * @throws
      */
     public static List<String[]> readCsvForSkip(String path, int skipNum) {
         final List<String[]> list = new ArrayList<>();

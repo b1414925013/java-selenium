@@ -94,7 +94,6 @@ public class FileBlockUtil {
      * @param targetFileName 目标文件名
      * @param blockSize 文件分割大小
      * @return: void
-     * @throws
      */
     public void splitFile(String sourceFile, String targetFile, String targetFileName, int blockSize) {
         final byte[] sourceFileBytes = getBytes(sourceFile);

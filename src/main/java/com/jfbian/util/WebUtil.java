@@ -20,6 +20,7 @@ import org.openqa.selenium.WebElement;
  * @author: bianjianfeng
  * @date: Oct 21, 2019 9:07:15 PM
  */
+@SuppressWarnings("all")
 public class WebUtil {
 
     private static Logger logger = Logger.getLogger(WebUtil.class);
@@ -366,7 +367,6 @@ public class WebUtil {
      * @author bianjianfeng
      * @date 2019年10月21日下午10:04:31
      * @param cssSelector
-     *            TODO
      */
     public static void webClick(String cssSelector) {
         getWebElement(cssSelector).click();
@@ -403,5 +403,18 @@ public class WebUtil {
 
     public WebUtil(WebDriver driver) {
         WebUtil.driver = driver;
+    }
+
+    /**
+     * 检查元素是否存在
+     */
+    public boolean isExist(String cssSelector) {
+        String pattern = "return document.querySelectorAll(\"" + cssSelector + "\")";
+        List<WebElement> eles = (List<WebElement>)js.executeScript(pattern);
+
+        if (eles.size() > 0) {
+            return true;
+        }
+        return false;
     }
 }

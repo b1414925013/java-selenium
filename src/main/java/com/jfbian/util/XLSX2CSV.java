@@ -22,7 +22,6 @@ import org.apache.poi.xssf.eventusermodel.ReadOnlySharedStringsTable;
 import org.apache.poi.xssf.eventusermodel.XSSFReader;
 import org.apache.poi.xssf.eventusermodel.XSSFSheetXMLHandler;
 import org.apache.poi.xssf.eventusermodel.XSSFSheetXMLHandler.SheetContentsHandler;
-import org.apache.poi.xssf.extractor.XSSFEventBasedExcelExtractor;
 import org.apache.poi.xssf.model.StylesTable;
 import org.apache.poi.xssf.usermodel.XSSFComment;
 import org.xml.sax.ContentHandler;
@@ -30,24 +29,6 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
-/**
-* A rudimentary XLSX -> CSV processor modeled on the POI sample program
-* XLS2CSVmra from the package org.apache.poi.hssf.eventusermodel.examples. As
-* with the HSSF version, this tries to spot missing rows and cells, and output
-* empty entries for them.
-* <p>
-* Data sheets are read using a SAX parser to keep the memory footprint
-* relatively small, so this should be able to read enormous workbooks. The
-* styles table and the shared-string table must be kept in memory. The standard
-* POI styles table class is used, but a custom (read-only) class is used for
-* the shared string table because the standard POI SharedStringsTable grows
-* very quickly with the number of unique strings.
-* <p>
-* For a more advanced implementation of SAX event parsing of XLSX files, see
-* {@link XSSFEventBasedExcelExtractor} and {@link XSSFSheetXMLHandler}. Note
-* that for many cases, it may be possible to simply use those with a custom
-* {@link SheetContentsHandler} and no SAX code needed of your own!
-*/
 public class XLSX2CSV {
 
     private static Logger logger = Logger.getLogger(XLSX2CSV.class);
@@ -56,10 +37,6 @@ public class XLSX2CSV {
 
     private int rowCount = 0;
 
-    /**
-     * Uses the XSSF Event SAX helpers to do most of the work of parsing the
-     * Sheet XML, and outputs the contents as a (basic) CSV.
-     */
     private class SheetToCSV implements SheetContentsHandler {
         private List<String> cells = new ArrayList<>();
         private int currentRow = -1;
@@ -108,15 +85,12 @@ public class XLSX2CSV {
 
         @Override
         public void headerFooter(String text, boolean isHeader, String tagName) {
-            // TODO Auto-generated method stub
 
         }
     }
 
     /**
      * 获取excel行数
-     *
-     *
      */
     private class SheetToCSV2 implements SheetContentsHandler {
 

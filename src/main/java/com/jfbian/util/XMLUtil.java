@@ -40,7 +40,6 @@ public class XMLUtil {
      */
     public static void writeToXML(Document dom, String xmlPath) throws Exception {
 
-        new OutputFormat();
         //首先创建样式和输出流
         final OutputFormat format = OutputFormat.createPrettyPrint();
         final OutputStream out = new FileOutputStream(xmlPath);

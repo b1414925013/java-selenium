@@ -6,7 +6,7 @@
  * @date:   2020年3月24日 上午12:17:54
  * @version V1.0
  */
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;

@@ -1,6 +1,4 @@
-package com.jfbian.util;
-
-
+package com.jfbian.utils;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,15 +12,15 @@ import com.jcraft.jsch.Session;
 import com.jcraft.jsch.SftpException;
 
 /*四、Jsch中sftp提供的一些api
-
-put()：      文件上传
-get()：      文件下载
-cd()：       进入指定目录
-ls()：       得到指定目录下的文件列表
-rename()：   重命名指定文件或目录
-rm()：       删除指定文件
-mkdir()：    创建目录
-rmdir()：    删除目录*/
+    put()：      文件上传
+    get()：      文件下载
+    cd()：       进入指定目录
+    ls()：       得到指定目录下的文件列表
+    rename()：   重命名指定文件或目录
+    rm()：       删除指定文件
+    mkdir()：    创建目录
+    rmdir()：    删除目录
+*/
 public class FTPUtil {
 
     /**

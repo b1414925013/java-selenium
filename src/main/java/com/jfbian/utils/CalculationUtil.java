@@ -1,4 +1,7 @@
-package com.jfbian.util;
+package com.jfbian.utils;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 /**
 * @ClassName:  CalculationUtil
@@ -6,9 +9,6 @@ package com.jfbian.util;
 * @author: bianjianfeng
 * @date:   2019年12月14日 下午7:47:32
 */
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-
 public class CalculationUtil {
 
     /**

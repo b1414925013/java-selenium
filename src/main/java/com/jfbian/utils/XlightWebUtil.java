@@ -1,4 +1,4 @@
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -120,7 +120,6 @@ public class XlightWebUtil {
      * @param parameters
      * @param destination
      * @throws Exception
-     *             void
      * @author bianjianfeng
      * @date 2019年11月14日上午12:47:00
      */
@@ -148,7 +147,6 @@ public class XlightWebUtil {
      * @param heads
      * @param parameters
      * @author bianjianfeng
-     * @return
      * @throws IOException
      * @throws SocketTimeoutException
      * @date 2019年11月9日下午10:40:03
@@ -172,11 +170,8 @@ public class XlightWebUtil {
      * @Method_Name: part
      * @Description: 填充part
      * @param map
-     *            TODO
      * @throws IOException
-     *             void
      * @author bianjianfeng
-     * @return
      * @date 2019年11月10日上午10:13:52
      */
     public IPart part(LinkedHashMap<String, String> map) throws IOException {
@@ -208,9 +203,7 @@ public class XlightWebUtil {
      * @param parameters
      * @param jsoData
      * @throws IOException
-     *             void
      * @author bianjianfeng
-     * @return
      * @throws MalformedURLException
      * @date 2019年11月10日上午11:28:45
      */
@@ -232,7 +225,6 @@ public class XlightWebUtil {
      * @param url
      * @param heads
      * @param parameters
-     * @return
      * @throws MalformedURLException
      * @throws SocketTimeoutException
      * @throws IOException
@@ -260,7 +252,6 @@ public class XlightWebUtil {
      * @param listMaps
      * @throws IOException
      * @author bianjianfeng
-     * @return
      * @date 2019年11月10日上午11:30:39
      */
     public IHttpResponse upFile(String url, Map<String, String> heads, Map<String, String> parameters,
@@ -299,7 +290,6 @@ public class XlightWebUtil {
      * @param destination
      * @param input
      * @throws IOException
-     *             void
      * @author bianjianfeng
      * @date 2019年11月14日上午12:46:29
      */
@@ -332,7 +322,6 @@ public class XlightWebUtil {
      * @param: @throws MalformedURLException
      * @param: @throws IOException
      * @return: IHttpResponse
-     * @throws
      */
     public IHttpResponse postForFromData(String url, Map<String, String> heads, Map<String, String> parameters,
         String fromData, String headContentType) throws MalformedURLException, IOException {

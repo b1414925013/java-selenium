@@ -6,7 +6,7 @@
  * @date:   2019年12月5日 下午10:59:54
  * @version V1.0
  */
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.io.BufferedOutputStream;
 import java.io.ByteArrayOutputStream;

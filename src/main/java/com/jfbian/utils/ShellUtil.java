@@ -6,7 +6,7 @@
  * @date:   2019年12月8日 上午9:25:57
  * @version V1.0
  */
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.io.BufferedReader;
 import java.io.InputStream;

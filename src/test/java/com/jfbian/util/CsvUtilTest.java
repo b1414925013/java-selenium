@@ -8,10 +8,12 @@
  */
 package com.jfbian.util;
 
-import org.junit.Test;
-
 import java.util.Arrays;
 import java.util.List;
+
+import org.junit.Test;
+
+import com.jfbian.utils.CsvUtil;
 
 /**
  * @ClassName: CsvUtilTest
@@ -22,16 +24,16 @@ import java.util.List;
 class CsvUtilTest {
 
     /**
-     * {@link com.jfbian.util.CsvUtil#readCsv(java.lang.String)} 的测试方法。
+     * {@link com.jfbian.utils.CsvUtil#readCsv(java.lang.String)} 的测试方法。
      */
     @Test
     public void testReadCsvString() {
-        final List<String[]> readCsv = CsvUtil.readCsv("C:\\Users\\Administrator\\Desktop\\新建文本文档.csv");
+        final List<String[]> readCsv = CsvUtil.readAllCsv("C:\\Users\\Administrator\\Desktop\\新建文本文档.csv");
         readCsv.forEach(eles -> System.out.println(Arrays.toString(eles)));
     }
 
     /**
-     * {@link com.jfbian.util.CsvUtil#readCsv(java.lang.String, int)} 的测试方法。
+     * {@link com.jfbian.utils.CsvUtil#readCsv(java.lang.String, int)} 的测试方法。
      */
     @Test
     public void testReadCsvStringInt() {
@@ -40,7 +42,7 @@ class CsvUtilTest {
     }
 
     /**
-     * {@link com.jfbian.util.CsvUtil#readCsvForSkip(java.lang.String, int)} 的测试方法。
+     * {@link com.jfbian.utils.CsvUtil#readCsvForSkip(java.lang.String, int)} 的测试方法。
      */
     @Test
     public void testReadCsvForSkip() {

@@ -1,6 +1,6 @@
 package com.jfbian;
 
-import com.jfbian.util.WebUtil;
+import com.jfbian.utils.WebUtil;
 
 /**
  * selenium-java版本为4.0.0-alpha-2 谷歌版本为78.0.3904.97 ChromeDriver版本为 78.0.3904.70

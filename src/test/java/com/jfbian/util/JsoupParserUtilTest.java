@@ -15,6 +15,8 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.junit.Test;
 
+import com.jfbian.utils.JsoupParserUtil;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;

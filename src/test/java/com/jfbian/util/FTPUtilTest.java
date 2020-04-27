@@ -11,6 +11,8 @@ package com.jfbian.util;
 import com.jcraft.jsch.Channel;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.Session;
+import com.jfbian.utils.FTPUtil;
+
 import org.junit.Test;
 
 import java.io.File;

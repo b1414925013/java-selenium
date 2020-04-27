@@ -12,6 +12,8 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.junit.Test;
 
+import com.jfbian.utils.XMLUtil;
+
 import java.io.File;
 import java.util.List;
 
@@ -25,7 +27,7 @@ import java.util.List;
 class XMLUtilTest {
 
     /**
-     * {@link com.jfbian.util.XMLUtil#getDocument(java.lang.String)} 的测试方法。
+     * {@link com.jfbian.utils.XMLUtil#getDocument(java.lang.String)} 的测试方法。
      *
      * @throws Exception
      */
@@ -51,7 +53,7 @@ class XMLUtilTest {
     }
 
     /**
-     * {@link com.jfbian.util.XMLUtil#writeToXML(org.dom4j.Document, java.lang.String)} 的测试方法。
+     * {@link com.jfbian.utils.XMLUtil#writeToXML(org.dom4j.Document, java.lang.String)} 的测试方法。
      */
     @Test
     public void testWriteToXML() {

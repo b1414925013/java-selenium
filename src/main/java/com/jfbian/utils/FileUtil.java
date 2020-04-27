@@ -1,4 +1,4 @@
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

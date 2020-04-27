@@ -6,7 +6,7 @@
  * @date:   2019年12月12日 下午11:24:00
  * @version V1.0
  */
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;

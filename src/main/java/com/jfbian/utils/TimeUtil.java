@@ -1,4 +1,4 @@
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.sql.Timestamp;
 import java.text.ParseException;

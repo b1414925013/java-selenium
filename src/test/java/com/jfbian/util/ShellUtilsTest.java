@@ -11,6 +11,8 @@ package com.jfbian.util;
 
 import org.junit.Test;
 
+import com.jfbian.utils.ShellUtil;
+
 /**
  * @ClassName:  ShellUtilsTest
  * @Description:TODO(描述这个类的作用)
@@ -20,7 +22,7 @@ import org.junit.Test;
 class ShellUtilsTest {
 
     /**
-     * {@link com.jfbian.util.ShellUtil#execute(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)} 的测试方法。
+     * {@link com.jfbian.utils.ShellUtil#execute(java.lang.String, java.lang.String, int, java.lang.String, java.lang.String)} 的测试方法。
      */
     @Test
     public void testExecute() {

@@ -6,7 +6,7 @@
  * @date:   2019年12月14日 下午10:31:12
  * @version V1.0
  */
-package com.jfbian.util;
+package com.jfbian.utils;
 
 import java.text.MessageFormat;
 

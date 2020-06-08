@@ -12,8 +12,9 @@ import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.poi.hssf.usermodel.HSSFDateUtil;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
+import org.apache.poi.ss.usermodel.DateUtil;
 
 /**
  * @ClassName:  ExcelUtil
@@ -30,17 +31,17 @@ public class ExcelUtil {
             return "";
         }
         String cellValue = "";
-        int cellType = cell.getCellType();
+        CellType cellType = cell.getCellType();
         switch (cellType) {
-            case Cell.CELL_TYPE_STRING: // 字符串类型
+            case STRING: // 字符串类型
                 cellValue = cell.getStringCellValue().trim();
                 cellValue = StringUtils.isEmpty(cellValue) ? "" : cellValue;
                 break;
-            case Cell.CELL_TYPE_BOOLEAN: // 布尔类型
+            case BOOLEAN: // 布尔类型
                 cellValue = String.valueOf(cell.getBooleanCellValue());
                 break;
-            case Cell.CELL_TYPE_NUMERIC: // 数值类型
-                if (HSSFDateUtil.isCellDateFormatted(cell)) { // 判断日期类型
+            case NUMERIC: // 数值类型
+                if (DateUtil.isCellDateFormatted(cell)) { // 判断日期类型
                     if ("m/d/yy".equals(cell.getCellStyle().getDataFormatString())) {
                         cellValue = new SimpleDateFormat("yyyy-MM-dd").format(cell.getDateCellValue());
                     } else {
@@ -53,7 +54,7 @@ public class ExcelUtil {
                         String.valueOf(new DecimalFormat(cell.getCellStyle().getDataFormatString().replace("%", ""))
                             .format(Double.valueOf(cell.getNumericCellValue() * 100))).concat("%");
                 } else if (cell.getCellStyle().getDataFormatString().contains("General")) {
-                    cell.setCellType(1);
+                    cell.setCellType(CellType.STRING);
                     cellValue = cell.getStringCellValue();
                 } else { // 否
                          // cellValue = new DecimalFormat("#.######").format(cell.getNumericCellValue());
@@ -62,7 +63,7 @@ public class ExcelUtil {
                             .format(cell.getNumericCellValue());
                 }
                 break;
-            default: // 其它类型，取空串吧
+            default: // 其它类型，取空串
                 cellValue = "";
                 break;
         }

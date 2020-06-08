@@ -12,7 +12,6 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
@@ -39,8 +38,12 @@ public class XlightWebUtil {
     private static HttpClient client = new HttpClient(createIgnoreVerifySSL());
 
     static {
-        client.setResponseTimeoutMillis(30L * 1000L);
-        client.setBodyDataReceiveTimeoutMillis(30L * 1000L);
+        client.setMaxIdle(3);
+        client.setConnectTimeoutMillis(300 * 1000);
+        client.setResponseTimeoutMillis(30 * 1000L);
+        client.setBodyDataReceiveTimeoutMillis(30 * 1000L);
+        client.setAutoHandleCookies(true);
+        // 有些接口不能使用重定向功能
         client.setFollowsRedirectMode(FollowsRedirectMode.ALL);
     }
 
@@ -56,6 +59,7 @@ public class XlightWebUtil {
         try {
             sc = SSLContext.getInstance("SSLv3");
             //sc = SSLContext.getInstance("TLSv1.3");
+            //sc = SSLContext.getInstance("TLSv1.2");
             // 实现一个X509TrustManager接口，用于绕过验证，不用修改里面的方法
             final X509TrustManager trustManager = new X509TrustManager() {
                 @Override
@@ -118,7 +122,7 @@ public class XlightWebUtil {
      * @param url
      * @param heads
      * @param parameters
-     * @param destination
+     * @param destination  目标文件(全路径名)
      * @throws Exception
      * @author bianjianfeng
      * @date 2019年11月14日上午12:47:00
@@ -130,7 +134,7 @@ public class XlightWebUtil {
             request.addHeader(key, heads.get(key));
         }
         for (final String key : parameters.keySet()) {
-            request.addParameter(key, heads.get(key));
+            request.addParameter(key, parameters.get(key));
         }
         final IHttpResponse response = client.call(request);
         final BodyDataSource body = response.getBody();
@@ -201,15 +205,15 @@ public class XlightWebUtil {
      * @param url
      * @param heads
      * @param parameters
-     * @param jsoData
+     * @param jsonData
      * @throws IOException
      * @author bianjianfeng
      * @throws MalformedURLException
      * @date 2019年11月10日上午11:28:45
      */
     public IHttpResponse postForJson(String url, Map<String, String> heads, Map<String, String> parameters,
-        String jsoData) throws MalformedURLException, IOException {
-        final PostRequest request = new PostRequest(url, "application/json;charset=UTF-8", jsoData);
+        String jsonData) throws MalformedURLException, IOException {
+        final PostRequest request = new PostRequest(url, "application/json;charset=UTF-8", jsonData);
         for (final String key : heads.keySet()) {
             request.addHeader(key, heads.get(key));
         }
@@ -229,9 +233,9 @@ public class XlightWebUtil {
      * @throws SocketTimeoutException
      * @throws IOException
      */
-    public IHttpResponse put(String url, Map<String, String> heads, Map<String, String> parameters, String jsonData,
+    public IHttpResponse put(String url, Map<String, String> heads, Map<String, String> parameters, String postData,
         String headContentType) throws MalformedURLException, IOException {
-        final PutRequest putRequest = new PutRequest(url, headContentType, jsonData);
+        final PutRequest putRequest = new PutRequest(url, headContentType, postData);
         for (final String key : heads.keySet()) {
             putRequest.addHeader(key, heads.get(key));
         }
@@ -257,18 +261,8 @@ public class XlightWebUtil {
     public IHttpResponse upFile(String url, Map<String, String> heads, Map<String, String> parameters,
         String headContentType, List<LinkedHashMap<String, String>> listMaps) throws IOException {
         final MultipartRequest request = new MultipartRequest("POST", url, headContentType);
-        final String contentType = request.getContentType();
-        final int contentTypeLength = contentType.length() - contentType.indexOf("boundary=") - 9 + 2;
-        int contentLength = contentTypeLength;
         for (final LinkedHashMap<String, String> linkedHashMap : listMaps) {
             final IPart part = part(linkedHashMap);
-            final int partLength = part.getNonBlockingBody().toString().getBytes().length;
-            int partHeaderLength = 0;
-            final Set<String> headerNameSet = part.getHeaderNameSet();
-            for (final String head : headerNameSet) {
-                partHeaderLength += head.length() + 2 + part.getHeader(head).length() + 2;
-            }
-            contentLength += partLength + contentTypeLength + partHeaderLength + 2;
             request.addPart(part);
         }
 
@@ -280,7 +274,6 @@ public class XlightWebUtil {
             request.addParameter(key, parameters.get(key));
         }
 
-        request.removeHeader("Transfer-Encoding");
         return client.call(request);
     }
 
@@ -318,7 +311,6 @@ public class XlightWebUtil {
      * @param: @param parameters
      * @param: @param fromData
      * @param: @param headContentType
-     * @param: @return
      * @param: @throws MalformedURLException
      * @param: @throws IOException
      * @return: IHttpResponse
@@ -333,5 +325,97 @@ public class XlightWebUtil {
             request.addParameter(key, parameters.get(key));
         }
         return client.call(request);
+    }
+
+    /**
+     * 带head,part的文上传请求
+     *
+     * @param postUrl url
+     * @param headMap head元素
+     * @param partMap part元素
+     * @param fileFullPath 文件
+     * @param name 文件上传name
+     * @param filePartName
+     * @return BodyDataSource
+     */
+    public static BodyDataSource multiPartRequest(String postUrl, Map<String, Object> headMap,
+        Map<String, Object> partMap, String fileFullPath, String name, String filePartName) {
+        MultipartRequest request = null;
+        BodyDataSource bodydataSource = null;
+        long contentLen = 0;
+        try {
+            request = new MultipartRequest("POST", postUrl, "multipart/form-data");
+
+            for (Entry<String, Object> entry : headMap.entrySet()) {
+                request.addHeader(entry.getKey(), String.valueOf(entry.getValue()));
+            }
+
+            for (Entry<String, Object> entry : partMap.entrySet()) {
+                Part part = new Part("", String.valueOf(entry.getValue()));
+                part.removeHeader("Content-Type");
+                String partHeaderLine = "Content-Disposition: form-data; name=\"" + entry.getKey() + "\"";
+                part.addHeaderlines(partHeaderLine);
+                request.addPart(part);
+                contentLen += partHeaderLine.length();
+                contentLen += String.valueOf(entry.getValue()).length();
+            }
+
+            ////////////////////////////////////////////////////////////////
+            File file = new File(fileFullPath);
+            Part filePart = new Part(file);
+            String partHeaderLine1 =
+                "Content-Disposition: form-data; name=\"" + name + "\"; filename=\"" + filePartName + "\"";
+            String partHeaderLine2 = "Content-Type: application/octet-stream";
+
+            if (fileFullPath.endsWith(".xml")) {
+                partHeaderLine2 = "Content-Type: text/xml";
+            }
+            if (fileFullPath.endsWith(".csv")) {
+                partHeaderLine2 = "Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            }
+            if (fileFullPath.endsWith(".xls")) {
+                partHeaderLine2 = "Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            }
+            if (fileFullPath.endsWith(".xlsx")) {
+                partHeaderLine2 = "Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            }
+            if (fileFullPath.endsWith(".msi") || fileFullPath.endsWith(".MSI")) {
+                partHeaderLine2 = "Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            }
+            if (fileFullPath.endsWith(".zip")) {
+                partHeaderLine2 = "Content-Type: application/zip";
+            }
+
+            String[] partheaderLines = new String[] {partHeaderLine1, partHeaderLine2};
+            filePart.addHeaderlines(partheaderLines);
+            request.addPart(filePart);
+            ////////////////////////////////////////////////////////////////
+
+            String contentType = request.getContentType();
+            int boundaryLen = contentType.length() - contentType.indexOf("boundary=") - 9;
+
+            // 换行符长度\r\n
+            int lenOfCRLF = 2;
+            // 每个Part用“--分隔符”分隔，最后一个“--分隔符--”表示结束,每一行都必须以\r\n结束，包括最后一行
+            int preBoundaryLen = 2;
+            int lastBoundaryLen = 2;
+
+            contentLen +=
+                (preBoundaryLen + boundaryLen + lenOfCRLF + lenOfCRLF + lenOfCRLF + lenOfCRLF) * partMap.size();
+            contentLen += preBoundaryLen + boundaryLen + lenOfCRLF + partHeaderLine1.length() + lenOfCRLF
+                + partHeaderLine2.length() + lenOfCRLF + lenOfCRLF + file.length() + lenOfCRLF + preBoundaryLen
+                + boundaryLen + lastBoundaryLen + lenOfCRLF;
+
+            // Content-Length 的长度是post 数据的长度，不包含请求头域长度
+            request.setHeader("Content-Length", String.valueOf(contentLen));
+            request.removeHeader("Transfer-Encoding");
+
+            IHttpResponse response = client.call(request);
+            bodydataSource = response.getBody();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return bodydataSource;
     }
 }

@@ -3,6 +3,7 @@ package com.jfbian.utils;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
@@ -26,6 +27,14 @@ public class WebUtil {
     private static Logger logger = Logger.getLogger(WebUtil.class);
     public static WebDriver driver = WebDriverUtil.driver;
     public static JavascriptExecutor js = getJavascriptExecutor();
+
+    public WebUtil() {
+        super();
+    }
+
+    public WebUtil(WebDriver driver) {
+        WebUtil.driver = driver;
+    }
 
     /**
      * @Method_Name: clickElementsByJquery
@@ -271,7 +280,7 @@ public class WebUtil {
 
     /**
      * @Method_Name: sendKey
-     * @Description: TODO(这里用一句话描述这个方法的作用) void
+     * @Description: 输入内容
      * @author bianjianfeng
      * @date 2019年10月21日下午10:48:05
      * @param cssSelector
@@ -284,8 +293,8 @@ public class WebUtil {
 
     /**
      * @Method_Name: setimplicitlyWait
-     * @Description: 设置隐性等待
-     * @param i
+     * @Description: 设置隐性等待(全局等待)
+     * @param i 等待时间(秒)
      * @author bianjianfeng
      * @date 2019年10月21日下午10:13:19
      */
@@ -306,7 +315,7 @@ public class WebUtil {
     /**
      * @Method_Name: sleep
      * @Description: 线程停止（i）秒
-     * @param i
+     * @param i 等待时间(秒)
      * @author bianjianfeng
      * @date Oct 21, 20199:21:44 PM
      */
@@ -328,17 +337,30 @@ public class WebUtil {
         driver.switchTo().defaultContent();
     }
 
+    /**
+     *
+     * @Title: switchToFrame
+     * @Description: 切换Frame
+     * @param srcStr 要切换的Frame的src
+     * @return: void
+     */
     public static void switchToFrame(String srcStr) {
-        logger.info("切换iframe开始");
+        logger.debug("切换iframe开始");
+        int count = 0;
         final List<WebElement> webElements = getWebElements("iframe");
         for (final WebElement webElement : webElements) {
             final String src = webElement.getAttribute("src");
             if (src.contains(srcStr)) {
                 driver.switchTo().frame(webElement);
+                count++;
                 logger.info("成功切换到ifram==>" + src);
+                break;
             }
         }
-        logger.info("切换iframe结束");
+        if (count == 0) {
+            logger.info("切换到ifram失败==>" + srcStr);
+        }
+        logger.debug("切换iframe结束");
     }
 
     /**
@@ -363,7 +385,7 @@ public class WebUtil {
 
     /**
      * @Method_Name: WebClick
-     * @Description: TODO(这里用一句话描述这个方法的作用) void
+     * @Description: 点击元素
      * @author bianjianfeng
      * @date 2019年10月21日下午10:04:31
      * @param cssSelector
@@ -397,14 +419,6 @@ public class WebUtil {
         js.executeScript("window.scrollTo(0,document.documentElement.clientHeight);");
     }
 
-    public WebUtil() {
-        super();
-    }
-
-    public WebUtil(WebDriver driver) {
-        WebUtil.driver = driver;
-    }
-
     /**
      * 检查元素是否存在
      */
@@ -416,5 +430,90 @@ public class WebUtil {
             return true;
         }
         return false;
+    }
+
+    /**
+     * 鼠标点击元素
+     */
+    public void mouseClick(WebElement element) {
+        String code = "var fireOnThis = arguments[0];" + "var evObj = document.createEvent('MouseEvents');"
+            + "evObj.initEvent( 'click', true, true );" + "fireOnThis.dispatchEvent(evObj);";
+        js.executeScript(code, element);
+    }
+
+    /**
+     * 鼠标移动到元素
+     */
+    public static void mouseEnter(WebElement element) {
+        String code = "var fireOnThis = arguments[0];" + "var evObj = document.createEvent('MouseEvents');"
+            + "evObj.initEvent( 'mouseenter', false, false );" + "fireOnThis.dispatchEvent(evObj);";
+        js.executeScript(code, element);
+    }
+
+    /**
+     * 鼠标移动到元素
+     */
+    public void mouseOver(WebElement element) {
+        String code = "var fireOnThis = arguments[0];" + "var evObj = document.createEvent('MouseEvents');"
+            + "evObj.initEvent( 'mouseover', true, true );" + "fireOnThis.dispatchEvent(evObj);";
+        js.executeScript(code, element);
+    }
+
+    /**
+    *
+    * @Title: getParentWebElement
+    * @Description: 获取父元素
+    * @param: element 基础元素
+    * @return: WebElement
+    */
+    public static WebElement getParentWebElement(WebElement element) {
+        return element.findElement(By.xpath("./parent::*"));
+    }
+
+    /**
+    *
+    * @Title: getprevElement
+    * @Description: 获取前一个元素
+    * @param: element 基础元素
+    * @return: WebElement
+    */
+    public static WebElement getprevElement(WebElement element) {
+        return element.findElement(By.xpath("./preceding-sibling::*[1]"));
+    }
+
+    /**
+    *
+    * @Title: getNextElement
+    * @Description: 获取后一个元素
+    * @param: element 基础元素
+    * @return: WebElement
+    */
+    public static WebElement getNextElement(WebElement element) {
+        return element.findElement(By.xpath("./following-sibling::*[1]"));
+    }
+
+    /**
+     *
+     * @Title: switchToWindow
+     * @Description: 切换window
+     * @param windowTitle 窗口名
+     * @return: void
+     */
+    public static void switchToWindow(String windowTitle) {
+        logger.debug("切换窗口开始");
+        int count = 0;
+        Set<String> windowHandles = driver.getWindowHandles();
+        for (String str : windowHandles) {
+            driver.switchTo().window(str);
+            if (Objects.equals(getWebTitle(), windowTitle)) {
+                count++;
+                logger.info("切换窗口成功==> " + windowTitle);
+                break;
+            }
+        }
+        if (count == 0) {
+            logger.info("切换窗口失败==> " + windowTitle);
+        }
+        logger.debug("切换窗口结束");
     }
 }

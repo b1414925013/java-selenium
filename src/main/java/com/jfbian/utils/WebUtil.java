@@ -516,4 +516,49 @@ public class WebUtil {
         }
         logger.debug("切换窗口结束");
     }
+
+    /**
+     * 滚动条移动到某个元素的位置
+     *
+     * @param ele滚动条要移动到的元素(经测试,此元素最好是div)
+     */
+    public void scrollToElement(WebElement ele) {
+        ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", ele);
+    }
+
+    /**
+    * 给定元素的前一个同辈元素
+    *
+    * @param ele
+    * @return
+    */
+    public WebElement prevEle(WebElement ele) {
+        String script = "var ele = arguments[0];";
+        script += "return $(ele).prev().get(0);";
+        return (WebElement)js.executeScript(script, ele);
+    }
+
+    /**
+     * 给定元素的后一个同辈元素
+     *
+     * @param ele
+     * @return
+     */
+    public WebElement nextEle(WebElement ele) {
+        String script = "var ele = arguments[0];";
+        script += "return $(ele).next().get(0);";
+        return (WebElement)js.executeScript(script, ele);
+    }
+
+    /**
+     * 获取元素的父元素
+     *
+     * @param ele
+     * @return
+     */
+    public WebElement parentEle(WebElement ele) {
+        String script = "var ele = arguments[0];";
+        script += "return $(ele).parent().get(0);";
+        return (WebElement)js.executeScript(script, ele);
+    }
 }

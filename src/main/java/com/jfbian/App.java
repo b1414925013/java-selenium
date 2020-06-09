@@ -1,7 +1,5 @@
 package com.jfbian;
 
-import org.openqa.selenium.WebElement;
-
 import com.jfbian.utils.WebUtil;
 
 /**
@@ -18,15 +16,6 @@ public class App {
         System.out.println(WebUtil.getWebTitle());
         System.out.println(WebUtil.getUrls());
         System.out.println(WebUtil.getCookies());
-
-        WebElement webElement = WebUtil.getWebElement("form#form");
-        WebElement getprevElement = WebUtil.getprevElement(webElement);
-        String attribute = getprevElement.getAttribute("id");
-        String attribute2 = getprevElement.getAttribute("class");
-        String attribute3 = getprevElement.getAttribute("href");
-        System.out.println(attribute);
-        System.out.println(attribute2);
-        System.out.println(attribute3);
 
         WebUtil.sendKey("input#kw", "hahaha");
         WebUtil.sleep(10);

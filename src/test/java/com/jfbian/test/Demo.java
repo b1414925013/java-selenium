@@ -1,19 +1,23 @@
 /**
- * @Title:  Demo.java
+ * @Title: Demo.java
  * @Package com.jfbian.test
- * @Description:    描述
+ * @Description: 描述
  * @author: bianjianfneg
- * @date:   2019年12月23日 下午7:44:39
+ * @date: 2019年12月23日 下午7:44:39
  * @version V1.0
  */
 package com.jfbian.test;
 
+import org.awaitility.Awaitility;
+
+import java.util.concurrent.TimeUnit;
+
 /**
-* @ClassName:  Demo
-* @Description:TODO(描述这个类的作用)
-* @author: bianjianfeng
-* @date:   2019年12月23日 下午7:44:39
-*/
+ * @ClassName: Demo
+ * @Description:TODO(描述这个类的作用)
+ * @author: bianjianfeng
+ * @date: 2019年12月23日 下午7:44:39
+ */
 public class Demo {
 
     /**
@@ -59,5 +63,7 @@ public class Demo {
         name();
         name2();
         name3();
+        Awaitility.await().atMost(600, TimeUnit.MILLISECONDS).until(() ->
+                "aaa".contains("Yanbin"));
     }
 }

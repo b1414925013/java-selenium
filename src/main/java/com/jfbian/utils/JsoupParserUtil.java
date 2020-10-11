@@ -1,27 +1,28 @@
 package com.jfbian.utils;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.regex.Pattern;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.regex.Pattern;
+
 /**
-* @ClassName:  JsoupParserUtil
-* @Description:html解析
-* @author: bianjianfeng
-* @date:   2019年12月6日 下午7:59:45
-*/
+ * @ClassName: JsoupParserUtil
+ * @Description:html解析
+ * @author: bianjianfeng
+ * @date: 2019年12月6日 下午7:59:45
+ */
 public class JsoupParserUtil {
     /**
-    * 根据元素id获取HTML元素
-    * @param document
-    * @param id
-    * @return
-    */
+     * 根据元素id获取HTML元素
+     *
+     * @param document
+     * @param id
+     * @return
+     */
     public static Element getElementById(Document document, String id) {
         Element element = null;
         if (document != null && id != null && !"".equals(id.trim())) {
@@ -31,11 +32,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据id获取HTML元素
-    * @param element
-    * @param id
-    * @return
-    */
+     * 根据id获取HTML元素
+     *
+     * @param element
+     * @param id
+     * @return
+     */
     public static Element getElementById(Element element, String id) {
         Element resultElement = null;
         if (element != null) {
@@ -45,11 +47,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据元素标签(tagName)获取HTMl元素
-    * @param document
-    * @param tagName
-    * @return
-    */
+     * 根据元素标签(tagName)获取HTMl元素
+     *
+     * @param document
+     * @param tagName
+     * @return
+     */
     public static Elements getElementsByTagName(Document document, String tagName) {
         Elements elements = null;
         if (document != null && tagName != null && !"".equals(tagName)) {
@@ -59,11 +62,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据元素标签(tagName)获取HTMl元素
-    * @param element
-    * @param tagName
-    * @return
-    */
+     * 根据元素标签(tagName)获取HTMl元素
+     *
+     * @param element
+     * @param tagName
+     * @return
+     */
     public static Elements getElementsByTagName(Element element, String tagName) {
         Elements resultElements = null;
         if (element != null && tagName != null && !"".equals(tagName)) {
@@ -73,11 +77,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据className(样式名称)获取HTML元素集合
-    * @param document
-    * @param className
-    * @return
-    */
+     * 根据className(样式名称)获取HTML元素集合
+     *
+     * @param document
+     * @param className
+     * @return
+     */
     public static Elements getElementsByClassName(Document document, String className) {
         Elements elements = null;
         if (document != null && className != null && !"".equals(className.trim())) {
@@ -87,11 +92,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据className(样式名称)获取HTML元素集合
-    * @param element
-    * @param className
-    * @return
-    */
+     * 根据className(样式名称)获取HTML元素集合
+     *
+     * @param element
+     * @param className
+     * @return
+     */
     public static Elements getElementsByClassName(Element element, String className) {
         Elements resultElements = null;
         if (element != null && className != null && !"".equals(className)) {
@@ -101,11 +107,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据元素是否具有属性元素key返回元素集合
-    * @param document
-    * @param attributeNameKey 元素属性key值
-    * @return
-    */
+     * 根据元素是否具有属性元素key返回元素集合
+     *
+     * @param document
+     * @param attributeNameKey 元素属性key值
+     * @return
+     */
     public static Elements getElementsByAttributeNameKey(Document document, String attributeNameKey) {
         Elements elements = null;
         if (document != null && attributeNameKey != null && !"".equals(attributeNameKey)) {
@@ -115,11 +122,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据元素是否具有属性元素key返回元素集合
-    * @param element
-    * @param attributeNameKey 元素属性key值
-    * @return
-    */
+     * 根据元素是否具有属性元素key返回元素集合
+     *
+     * @param element
+     * @param attributeNameKey 元素属性key值
+     * @return
+     */
     public static Elements getElementsByAttributeNameKey(Element element, String attributeNameKey) {
         Elements resultElements = null;
         if (element != null && attributeNameKey != null && !"".equals(attributeNameKey)) {
@@ -129,45 +137,48 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据元素是否具有属性元素key并且key对应的值为value获取元素集合
-    * @param document
-    * @param attributeKey
-    * @param attributeValue
-    * @return
-    */
+     * 根据元素是否具有属性元素key并且key对应的值为value获取元素集合
+     *
+     * @param document
+     * @param attributeKey
+     * @param attributeValue
+     * @return
+     */
     public static Elements getElementsByAttributeNameValue(Document document, String attributeKey,
-        String attributeValue) {
+                                                           String attributeValue) {
         Elements elements = null;
         if (document != null && attributeKey != null && !"".equals(attributeKey.trim()) && attributeValue != null
-            && !"".equals(attributeValue.trim())) {
+                && !"".equals(attributeValue.trim())) {
             elements = document.getElementsByAttributeValue(attributeKey, attributeValue);
         }
         return elements;
     }
 
     /**
-    * 根据元素是否具有属性元素key并且key对应的值为value获取元素集合
-    * @param element
-    * @param attributeKey
-    * @param attributeValue
-    * @return
-    */
+     * 根据元素是否具有属性元素key并且key对应的值为value获取元素集合
+     *
+     * @param element
+     * @param attributeKey
+     * @param attributeValue
+     * @return
+     */
     public static Elements getElementsByAttributeNameValue(Element element, String attributeKey,
-        String attributeValue) {
+                                                           String attributeValue) {
         Elements resultElements = null;
         if (element != null && attributeKey != null && !"".equals(attributeKey.trim()) && attributeValue != null
-            && !"".equals(attributeValue.trim())) {
+                && !"".equals(attributeValue.trim())) {
             resultElements = element.getElementsByAttributeValue(attributeKey, attributeValue);
         }
         return resultElements;
     }
 
     /**
-    * 根据属性key值是否以特定字符串开头获取元素集合
-    * @param document
-    * @param attributeValue
-    * @return
-    */
+     * 根据属性key值是否以特定字符串开头获取元素集合
+     *
+     * @param document
+     * @param attributeValue
+     * @return
+     */
     public static Elements getElementsByAttributeNameStartWithValue(Document document, String keyValue) {
         Elements elements = null;
         if (document != null && keyValue != null && !"".equals(keyValue.trim())) {
@@ -177,11 +188,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据属性key值是否以特定字符串开头获取元素集合
-    * @param element
-    * @param attributeValue
-    * @return
-    */
+     * 根据属性key值是否以特定字符串开头获取元素集合
+     *
+     * @param element
+     * @param attributeValue
+     * @return
+     */
     public static Elements getElementsByAttributeNameStartWithValue(Element element, String keyValue) {
         Elements elements = null;
         if (element != null && keyValue != null && !"".equals(keyValue.trim())) {
@@ -191,13 +203,14 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据属性value值是否被包含在某个元素的某个属性中获取元素集合
-    * @param document
-    * @param containValue
-    * @return
-    */
+     * 根据属性value值是否被包含在某个元素的某个属性中获取元素集合
+     *
+     * @param document
+     * @param containValue
+     * @return
+     */
     public static Elements getElementsByAttributeValueContaining(Document document, String attributeKey,
-        String containValue) {
+                                                                 String containValue) {
         Elements elements = null;
         if (document != null && containValue != null && !"".equals(containValue)) {
             elements = document.getElementsByAttributeValueContaining(attributeKey, containValue);
@@ -206,14 +219,15 @@ public class JsoupParserUtil {
     }
 
     /**
-    *  根据属性value值是否被包含在某个元素的某个属性中获取元素集合
-    * @param element
-    * @param attributeKey
-    * @param containValue
-    * @return
-    */
+     * 根据属性value值是否被包含在某个元素的某个属性中获取元素集合
+     *
+     * @param element
+     * @param attributeKey
+     * @param containValue
+     * @return
+     */
     public static Elements getElementsByAttributeValueContaining(Element element, String attributeKey,
-        String containValue) {
+                                                                 String containValue) {
         Elements elements = null;
         if (element != null && containValue != null && !"".equals(containValue)) {
             elements = element.getElementsByAttributeValueContaining(attributeKey, containValue);
@@ -222,47 +236,50 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据属性的value值是否以某个字符串结尾获取元素集合
-    * @param document
-    * @param attributeKey
-    * @param valueSuffix
-    * @return
-    */
+     * 根据属性的value值是否以某个字符串结尾获取元素集合
+     *
+     * @param document
+     * @param attributeKey
+     * @param valueSuffix
+     * @return
+     */
     public static Elements getElementsByAttributeValueEnding(Document document, String attributeKey,
-        String valueSuffix) {
+                                                             String valueSuffix) {
         Elements elements = null;
         if (document != null && attributeKey != null && !"".equals(attributeKey) && valueSuffix != null
-            && !"".equals(valueSuffix)) {
+                && !"".equals(valueSuffix)) {
             elements = document.getElementsByAttributeValueEnding(attributeKey, valueSuffix);
         }
         return elements;
     }
 
     /**
-    * 根据属性的value值是否以某个字符串结尾获取元素集合
-    * @param element
-    * @param attributeKey
-    * @param valueSuffix
-    * @return
-    */
+     * 根据属性的value值是否以某个字符串结尾获取元素集合
+     *
+     * @param element
+     * @param attributeKey
+     * @param valueSuffix
+     * @return
+     */
     public static Elements getElementsByAttributeValueEnding(Element element, String attributeKey, String valueSuffix) {
         Elements elements = null;
         if (element != null && attributeKey != null && !"".equals(attributeKey) && valueSuffix != null
-            && !"".equals(valueSuffix)) {
+                && !"".equals(valueSuffix)) {
             elements = element.getElementsByAttributeValueEnding(attributeKey, valueSuffix);
         }
         return elements;
     }
 
     /**
-    * 根据属性值value的正则表达式获取元素集合
-    * @param document
-    * @param attributeKey
-    * @param pattern
-    * @return
-    */
+     * 根据属性值value的正则表达式获取元素集合
+     *
+     * @param document
+     * @param attributeKey
+     * @param pattern
+     * @return
+     */
     public static Elements getElementsByAttributeValueMatching(Document document, String attributeKey,
-        Pattern pattern) {
+                                                               Pattern pattern) {
         Elements elements = null;
         if (document != null && attributeKey != null && !"".equals(attributeKey) && pattern != null) {
             elements = document.getElementsByAttributeValueMatching(attributeKey, pattern);
@@ -271,12 +288,13 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据属性值value的正则表达式获取元素集合
-    * @param element
-    * @param attributeKey
-    * @param pattern
-    * @return
-    */
+     * 根据属性值value的正则表达式获取元素集合
+     *
+     * @param element
+     * @param attributeKey
+     * @param pattern
+     * @return
+     */
     public static Elements getElementsByAttributeValueMatching(Element element, String attributeKey, Pattern pattern) {
         Elements elements = null;
         if (element != null && attributeKey != null && !"".equals(attributeKey) && pattern != null) {
@@ -286,79 +304,84 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据属性值的value的正则表达式获取元素集合
-    * @param document
-    * @param attributeKey
-    * @param regualRegx
-    * @return
-    */
+     * 根据属性值的value的正则表达式获取元素集合
+     *
+     * @param document
+     * @param attributeKey
+     * @param regualRegx
+     * @return
+     */
     public static Elements getElementsByAttributeValueMatching(Document document, String attributeKey,
-        String regualRegx) {
+                                                               String regualRegx) {
         Elements elements = null;
         if (document != null && attributeKey != null && !"".equals(attributeKey) && regualRegx != null
-            && !"".equals(regualRegx)) {
+                && !"".equals(regualRegx)) {
             elements = document.getElementsByAttributeValueMatching(attributeKey, regualRegx);
         }
         return elements;
     }
 
     /**
-    * 根据属性值的value的正则表达式获取元素集合
-    * @param element
-    * @param attributeKey
-    * @param regualRegx
-    * @return
-    */
+     * 根据属性值的value的正则表达式获取元素集合
+     *
+     * @param element
+     * @param attributeKey
+     * @param regualRegx
+     * @return
+     */
     public static Elements getElementsByAttributeValueMatching(Element element, String attributeKey,
-        String regualRegx) {
+                                                               String regualRegx) {
         Elements elements = null;
         if (element != null && attributeKey != null && !"".equals(attributeKey) && regualRegx != null
-            && !"".equals(regualRegx)) {
+                && !"".equals(regualRegx)) {
             elements = element.getElementsByAttributeValueMatching(attributeKey, regualRegx);
         }
         return elements;
     }
 
     /**
-    * 返回属性键attributeKey不等于值attributeValue的元素集合
-    * @param document
-    * @param attributeKey
-    * @param attributeValue
-    * @return
-    */
+     * 返回属性键attributeKey不等于值attributeValue的元素集合
+     *
+     * @param document
+     * @param attributeKey
+     * @param attributeValue
+     * @return
+     */
     public static Elements getElementsByAttributeValueNot(Document document, String attributeKey,
-        String attributeValue) {
+                                                          String attributeValue) {
         Elements elements = null;
         if (document != null && attributeKey != null && !"".equals(attributeKey) && attributeValue != null
-            && !"".equals(attributeValue)) {
+                && !"".equals(attributeValue)) {
             elements = document.getElementsByAttributeValueNot(attributeKey, attributeValue);
         }
         return elements;
     }
 
     /**
-    * 返回属性键attributeKey不等于值attributeValue的元素集合
-    * @param element
-    * @param attributeKey
-    * @param attributeValue
-    * @return
-    */
+     * 返回属性键attributeKey不等于值attributeValue的元素集合
+     *
+     * @param element
+     * @param attributeKey
+     * @param attributeValue
+     * @return
+     */
     public static Elements getElementsByAttributeValueNot(Element element, String attributeKey, String attributeValue) {
         Elements elements = null;
         if (element != null && attributeKey != null && !"".equals(attributeKey) && attributeValue != null
-            && !"".equals(attributeValue)) {
+                && !"".equals(attributeValue)) {
             elements = element.getElementsByAttributeValueNot(attributeKey, attributeValue);
         }
         return elements;
     }
 
     /**
-    * 根据选择器匹配的字符串返回
-    * Elements(元素集合)
-    * @param document
-    * @param selectStr 选择器(类似于JQuery)
-    * @return
-    */
+     * 根据选择器匹配的字符串返回
+     * Elements(元素集合)
+     *
+     * @param document
+     * @param selectStr 选择器(类似于JQuery)
+     * @return
+     */
     public static Elements getMoreElementsBySelectStr(Document document, String selectStr) {
         if (document == null || selectStr == null || "".equals(selectStr.trim())) {
             return null;
@@ -373,12 +396,13 @@ public class JsoupParserUtil {
     }
 
     /**
-    *根据选择器匹配的字符串返回
-    * Elements(元素集合)
-    * @param element
-    * @param selectStr
-    * @return
-    */
+     * 根据选择器匹配的字符串返回
+     * Elements(元素集合)
+     *
+     * @param element
+     * @param selectStr
+     * @return
+     */
     public static Elements getMoreElementsBySelectStr(Element element, String selectStr) {
         if (element == null || selectStr == null || "".equals(selectStr.trim())) {
             return null;
@@ -393,12 +417,13 @@ public class JsoupParserUtil {
     }
 
     /**
-      * 根据选择器匹配的字符串返回
-    * Element(单个元素)
-    * @param document
-    * @param selectStr 选择器(类似于JQuery)
-    * @return
-    */
+     * 根据选择器匹配的字符串返回
+     * Element(单个元素)
+     *
+     * @param document
+     * @param selectStr 选择器(类似于JQuery)
+     * @return
+     */
     public static Element getSingleElementBySelectStr(Document document, String selectStr) {
         final Elements elements = getMoreElementsBySelectStr(document, selectStr);
         if (elements != null && elements.size() > 0) {
@@ -409,12 +434,13 @@ public class JsoupParserUtil {
     }
 
     /**
-      * 根据选择器匹配的字符串返回
-    * Element(单个元素)
-    * @param element
-    * @param selectStr
-    * @return
-    */
+     * 根据选择器匹配的字符串返回
+     * Element(单个元素)
+     *
+     * @param element
+     * @param selectStr
+     * @return
+     */
     public static Element getSingleElementBySelectStr(Element element, String selectStr) {
         final Elements elements = getMoreElementsBySelectStr(element, selectStr);
         if (elements != null && elements.size() > 0) {
@@ -425,11 +451,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据选择器匹配的字符串返回单个元素的Html字符串
-    * @param document
-    * @param selectStr 选择器(类似于JQuery)
-    * @return
-    */
+     * 根据选择器匹配的字符串返回单个元素的Html字符串
+     *
+     * @param document
+     * @param selectStr 选择器(类似于JQuery)
+     * @return
+     */
     public static String getSingleElementHtmlBySelectStr(Document document, String selectStr) {
         final Element element = getSingleElementBySelectStr(document, selectStr);
         if (element != null) {
@@ -440,11 +467,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据选择器匹配的字符串返回单个元素的Html字符串
-    * @param element
-    * @param selectStr
-    * @return
-    */
+     * 根据选择器匹配的字符串返回单个元素的Html字符串
+     *
+     * @param element
+     * @param selectStr
+     * @return
+     */
     public static String getSingleElementHtmlBySelectStr(Element element, String selectStr) {
         final Element ele = getSingleElementBySelectStr(element, selectStr);
         if (ele != null) {
@@ -455,11 +483,12 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 根据元素属性名key获取元素属性名value
-    * @param element
-    * @param attributeName
-    * @return
-    */
+     * 根据元素属性名key获取元素属性名value
+     *
+     * @param element
+     * @param attributeName
+     * @return
+     */
     public static String getAttributeValue(Element element, String attributeName) {
         String attributeValue = null;
         if (element != null && attributeName != null && !"".equals(attributeName)) {
@@ -469,10 +498,11 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 从elements集合中获取element并解析成HTML字符串
-    * @param elements
-    * @return
-    */
+     * 从elements集合中获取element并解析成HTML字符串
+     *
+     * @param elements
+     * @return
+     */
     public static String getSingElementHtml(Elements elements) {
         Element ele = null;
         String htmlStr = null;
@@ -484,10 +514,11 @@ public class JsoupParserUtil {
     }
 
     /**
-    * 从elements集合中获取element并解析成Text字符串
-    * @param elements
-    * @return
-    */
+     * 从elements集合中获取element并解析成Text字符串
+     *
+     * @param elements
+     * @return
+     */
     public static String getSingElementText(Elements elements) {
         Element ele = null;
         String htmlStr = null;

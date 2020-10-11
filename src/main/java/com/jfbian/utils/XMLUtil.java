@@ -23,7 +23,7 @@ import org.dom4j.io.XMLWriter;
 * @author: bianjianfeng
 * @date:   2019年12月12日 下午11:24:00
 */
-public class XMLUtil {
+public class XmlUtil {
     /**
      * 需要一个方法来创建DOM4j德 XML解析器并返回一个Document对象
      */

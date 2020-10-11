@@ -12,7 +12,7 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 import org.junit.Test;
 
-import com.jfbian.utils.XMLUtil;
+import com.jfbian.utils.XmlUtil;
 
 import java.io.File;
 import java.util.List;
@@ -27,7 +27,7 @@ import java.util.List;
 class XMLUtilTest {
 
     /**
-     * {@link com.jfbian.utils.XMLUtil#getDocument(java.lang.String)} 的测试方法。
+     * {@link XmlUtil#getDocument(java.lang.String)} 的测试方法。
      *
      * @throws Exception
      */
@@ -35,7 +35,7 @@ class XMLUtilTest {
     public void testGetDocument() throws Exception {
         final File file = new File("./");
         System.out.println(file.getAbsolutePath());
-        final Document document = XMLUtil.getDocument("./files/person.xml");
+        final Document document = XmlUtil.getDocument("./files/person.xml");
         final Element root = document.getRootElement();
         final Element beQuery = (Element) root.selectSingleNode("//person[@age='30']");
         if (beQuery == null) {
@@ -49,11 +49,11 @@ class XMLUtilTest {
 
         final List selectNodes = root.selectNodes("//person");
         System.out.println(selectNodes);
-        XMLUtil.writeToXML(document, "./files/newperson.xml");
+        XmlUtil.writeToXML(document, "./files/newperson.xml");
     }
 
     /**
-     * {@link com.jfbian.utils.XMLUtil#writeToXML(org.dom4j.Document, java.lang.String)} 的测试方法。
+     * {@link XmlUtil#writeToXML(org.dom4j.Document, java.lang.String)} 的测试方法。
      */
     @Test
     public void testWriteToXML() {
